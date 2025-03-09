@@ -3,7 +3,6 @@
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,28 +14,31 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui-extension/password-input";
-import { useRouter } from "next/navigation";
+import { adminSignIn } from "./actions";
+import { ISignIn, signInFormSchema } from "./validation";
 
 
-const formSchema = z.object({
-    email: z.string().email("Enter a valid email address"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
-});
-export type ISignIn = z.infer<typeof formSchema>;
 
 export default function ProviderSignInForm() {
-    const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ISignIn>({
+    resolver: zodResolver(signInFormSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
+  async function onSubmit(values: ISignIn) {
+    const res = await adminSignIn(values);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-  toast(JSON.stringify(values));
+    if (res.success) {
+      if(res.redirectPath) {
+        window.location.href = res.redirectPath;
+      }
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
+    }
   }
 
   return (
@@ -52,7 +54,11 @@ export default function ProviderSignInForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="yourname@mailserver.com" type="email" {...field} />
+                <Input
+                  placeholder="yourname@mailserver.com"
+                  type="email"
+                  {...field}
+                />
               </FormControl>
 
               <FormMessage />
@@ -75,7 +81,9 @@ export default function ProviderSignInForm() {
           )}
         />
 
-        <Button type="submit" className="w-full">Sign In</Button>
+        <Button type="submit" className="w-full">
+          Sign In
+        </Button>
       </form>
     </Form>
   );

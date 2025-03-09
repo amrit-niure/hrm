@@ -16,7 +16,7 @@ export default function SignIn() {
               <a href="../" className="flex items-center justify-center gap-2"><ArrowLeft/> Back</a>
             </Button>
             <Button variant={"outline"}>
-              <a href="/employer/signin" className="flex items-center justify-center gap-2"> <Building2 />Manager</a>
+              <a href="/admin/signin" className="flex items-center justify-center gap-2"> <Building2 />Manager</a>
             </Button>
           </div>
           <div className="flex flex-col h-full items-center justify-center space-y-4 ">
