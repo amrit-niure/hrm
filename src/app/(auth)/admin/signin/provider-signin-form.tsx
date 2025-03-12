@@ -14,12 +14,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui-extension/password-input";
-import { adminSignIn } from "./actions";
+import { adminSignIn, adminSignUp } from "./actions";
 import { ISignIn, signInFormSchema } from "./validation";
+import { useState } from "react";
+import { set } from "zod";
+import { LoaderCircle } from "lucide-react";
+import { CustomSpinner } from "@/components/common/spinner";
 
 
 
 export default function ProviderSignInForm() {
+  const [loading, setLoading] = useState(false);
   const form = useForm<ISignIn>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -29,15 +34,18 @@ export default function ProviderSignInForm() {
   });
 
   async function onSubmit(values: ISignIn) {
-    const res = await adminSignIn(values);
-
+    setLoading(true);
+    // const res = await adminSignIn(values);
+    const res = await adminSignUp(values);
     if (res.success) {
       if(res.redirectPath) {
         window.location.href = res.redirectPath;
       }
       toast.success(res.message);
+      setLoading(false);
     } else {
       toast.error(res.message);
+      setLoading(false);
     }
   }
 
@@ -81,8 +89,8 @@ export default function ProviderSignInForm() {
           )}
         />
 
-        <Button type="submit" className="w-full">
-          Sign In
+        <Button type="submit" className="w-full" disabled={loading}>
+         {loading ? <CustomSpinner className="h-4 w-4" /> : "Sign In"} 
         </Button>
       </form>
     </Form>
