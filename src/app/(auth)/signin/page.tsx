@@ -5,7 +5,7 @@ import SignInForm from "./signin-form";
 
 export default function SignIn() {
   return (
-    <div className="h-screen w-full">
+    <div className="h-screen w-full ">
       <div className="flex h-full">
         <div className="flex-1 hidden h-full bg-muted p-10  dark:border-r lg:flex">
           <div className="flex items-center text-lg font-medium">Group 8 HRM</div>
@@ -19,7 +19,7 @@ export default function SignIn() {
               <a href="/admin/signin" className="flex items-center justify-center gap-2"> <Building2 />Manager</a>
             </Button>
           </div>
-          <div className="flex flex-col h-full items-center justify-center space-y-4 ">
+          <div className="flex flex-col h-full items-center justify-center space-y-4 border ">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
                 Employee Sign In
