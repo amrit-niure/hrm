@@ -11,7 +11,7 @@ export default function JobsPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-bold tracking-tight">Job Postings</h1>
         <p className="text-muted-foreground">
-          Manage your company's job postings
+          Manage your company&#39;s job postings
         </p>
       </div>
 

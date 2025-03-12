@@ -31,7 +31,7 @@ export default function SignIn() {
            <SignInForm />
             <div className="text-center text-sm mt-4">
               <span className="text-muted-foreground">
-                Don't have an account?{" "}
+                Don&#39;t have an account?{" "}
               </span>
               <Link
                 href="#"

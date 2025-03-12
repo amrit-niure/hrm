@@ -152,7 +152,7 @@ export function AppSidebar({ className, ...props }: SidebarNavProps) {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild>
-                <a href="/">
+                <Link href="/">
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                     <Command className="size-4" />
                   </div>
@@ -160,7 +160,7 @@ export function AppSidebar({ className, ...props }: SidebarNavProps) {
                     <span className="truncate font-semibold">HRM - AIH</span>
                     <span className="truncate text-xs">Group 8</span>
                   </div>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

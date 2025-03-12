@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui-extension/password-input";
-import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email("Enter a valid email address"),
@@ -24,7 +23,6 @@ const formSchema = z.object({
 export type ISignIn = z.infer<typeof formSchema>;
 
 export default function SignInForm() {
-  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
