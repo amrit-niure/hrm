@@ -1,16 +1,22 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useLogout } from "@/hooks/use-logout";
+import { signOut } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LogOut() {
-  const { logout, isPending } = useLogout();
-
+const router = useRouter();
   return (
     <Button
-      onClick={() => {
-        logout();
+      onClick={async () => {
+       "use server"
+       await signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/login"); // redirect to login page
+          },
+        },
+      });
       }}
-      disabled={isPending}
     >
       Log Out
     </Button>
