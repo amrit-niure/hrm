@@ -37,5 +37,3 @@ This project focuses on **employee onboarding, attendance tracking, payroll proc
 This is an **all-in-one HR and Payroll Management System** designed to **simplify payroll, automate attendance tracking, and streamline recruitment & onboarding**. 🚀
 
 
-This document serves as an initial **README** for your final-year project, outlining the **core functionality, key features, and database structure** of the system.
-
