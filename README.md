@@ -1,4 +1,4 @@
-# Final Year Project: HR & Payroll Management System
+
 
 ## **Overview**
 This project focuses on **employee onboarding, attendance tracking, payroll processing, and self-service for employees**.
